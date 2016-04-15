@@ -113,4 +113,52 @@ function highLowTwo(array) {
     return obj;
 }
 
-console.log(highLowTwo(nums4));
+//console.log(highLowTwo(nums4));
+
+
+/* Exercise 9 - Starting on week 3 of the bootcamp, we will be learning about databases. Databases are useful for saving data for long periods of time.
+
+Contrary to a JavaScript program, where all the data disappears when the program terminates, databases keep their data "forever".
+
+In this exercise, we're going to imagine that we are storing people information in a database, and that we queried our database to retrieve a list of people.
+
+Our database returns to us an array of people objects, and each of them has a unique ID that the database uses to refer to it.
+
+For this exercise, we want to use Array.prototype.reduce to transform our array of people into an object, keyed with the unique ID.
+
+This object could be useful if we are often looking up people by their unique ID.
+
+Write a function called peopleById that takes an array of people and returns an object where each person is keyed by their unique ID.
+
+You have effectively created what we call an index, not unlike the one you have in your phonebook.
+*/
+
+var dbArray = [
+  {
+    id: "KeXoYg92is",
+    firstName: "John",
+    lastName: "Smith",
+    email: "john@smith.com"
+  },
+  {
+    id: "NkALmSWtUp",
+    firstName: "Donald",
+    lastName: "Duck",
+    email: "don@disney.com"
+  },
+  {
+    id: "m7LPbJYSUg",
+    firstName: "John",
+    lastName: "Vader",
+    email: "vader@darkside.com"
+  }
+];
+
+function peopleById(arr) {
+    return arr.reduce(function(acc, next){
+        acc[next.id] = next; // set new key on empty object and asign the entire object (person) to it
+        return acc;
+    }, {});
+}
+
+console.log(peopleById(dbArray));
