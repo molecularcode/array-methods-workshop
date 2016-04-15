@@ -161,4 +161,53 @@ function peopleById(arr) {
     }, {});
 }
 
-console.log(peopleById(dbArray));
+//console.log(peopleById(dbArray));
+
+
+/* Exercise 10 - Expanding on the previous exercise, this time we are going to create an index on first names. Notice how in the previous exercise, each ID was unique. In this case, two people have the same first name.
+
+We want to create a function called peopleByFirstName that will take an array of people.called
+
+You have effectively created an index on first name. This lets you find all people called, say, "John" without having to look through the whole results.
+*/
+
+var dbArray2 = [
+  {
+    id: "KeXoYg92is",
+    firstName: "John",
+    lastName: "Smith",
+    email: "john@smith.com"
+  },
+  {
+    id: "NkALmSWtUp",
+    firstName: "Donald",
+    lastName: "Duck",
+    email: "don@disney.com"
+  },
+  {
+    id: "m7LPbJYSUg",
+    firstName: "John",
+    lastName: "Vader",
+    email: "vader@darkside.com"
+  }
+];
+
+function peopleByFirstName(arr) {
+    return arr.reduce(function(acc, next) {
+        if(!acc[next.firstName]){ // if the key does not already exist
+            acc[next.firstName] = [];  // create key
+            acc[next.firstName].push(next);  // push the person object to that key
+        } 
+        else { // if the key already exists
+            for(var prop in acc) { // for each of the properties in the object
+                if(prop === next.firstName) { // check if the property matches the first name of the person object we want to add
+                    acc[next.firstName].push(next); // push the person object to the correct key
+                }
+            }
+        }
+        
+    return acc;
+    }, {});
+}
+
+console.log(peopleByFirstName(dbArray2));
