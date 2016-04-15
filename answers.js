@@ -90,4 +90,27 @@ function highLow(array) {
     return obj;
 }
 
-console.log(highLow(nums3));
+//console.log(highLow(nums3));
+
+
+// Exercise 7 - Expanding on exercise 6, write a function called highLowTwo that takes an array of numbers, and returns the higest, second highest, lowest, and second lowest numbers.
+
+var nums4 = [1, -10, 20, 40, 5];
+  
+function highLowTwo(array) {
+    var obj = array.reduce(function(acc, curr) {
+        if(curr > acc.highest) {
+            acc.secondHighest = acc.highest;
+            acc.highest = curr;
+        }
+        if(curr < acc.lowest ) {
+            acc.secondLowest = acc.lowest;
+            acc.lowest = curr;
+        }
+    return acc;
+    
+    }, {highest: -Infinity, secondHighest: 0, lowest: Infinity, secondLowest: 0});
+    return obj;
+}
+
+console.log(highLowTwo(nums4));
