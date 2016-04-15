@@ -60,14 +60,34 @@ function countVowels(string) {
     var charArray = string.toLowerCase().split('');
     var numVowels = charArray.reduce(function(acc, curr) {
         if (curr === "a" || curr === "e" || curr === "i" || curr === "o" || curr === "u") {
-            //console.log(curr);
-             acc++;
+            acc++;
         }
         return acc;
     }, 0);
     return numVowels;
 }
 
-console.log(countVowels("Happiness is a method of life, not a destination"));
+//console.log(countVowels("Happiness is a method of life, not a destination"));
 
 
+// Exercise 6 - Write a function called highLow that takes an array of numbers, and returns an object with a property highest containing the highest number, and a property lowest containing the lowest number, using Array.prototype.reduce.
+    // For example, starting with [1, -10, 20, 40, 5], your function should return {highest: 40, lowest: -10}.
+    // Hint: Javascript has a special value called Infinity, which is higher than any other number. See if you can initialize your reduce accumulator with Infinity and -Infinity :)
+
+var nums3 = [1, -10, 20, 40, 5];
+  
+function highLow(array) {
+    var obj = array.reduce(function(acc, curr) {
+        if(curr > acc.highest) {
+            acc.highest = curr;
+        }
+        if(curr < acc.lowest ) {
+            acc.lowest = curr;
+        }
+    return acc;
+    
+    }, {highest: -Infinity, lowest: Infinity});
+    return obj;
+}
+
+console.log(highLow(nums3));
