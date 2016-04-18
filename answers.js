@@ -210,4 +210,19 @@ function peopleByFirstName(arr) {
     }, {});
 }
 
+//console.log(peopleByFirstName(dbArray2));
+
+
+// Simplified version after walkthrough in class
+
+function peopleByFirstName(arr) {
+    return arr.reduce(function(acc, next) {
+        if(!acc[next.firstName]){ // if the key does not already exist
+            acc[next.firstName] = [];  // create key
+        }
+        acc[next.firstName].push(next);  // push the person object to that key
+        return acc;
+    }, {});
+}
+
 console.log(peopleByFirstName(dbArray2));
